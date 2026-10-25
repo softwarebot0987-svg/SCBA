@@ -1,2004 +1,253 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#e9eee9">
-  <meta name="description" content="Welcome to Saurabh Chavan Badminton Academy. Explore badminton training, court location, academy photos and WhatsApp enquiries.">
-  <title>Saurabh Chavan Badminton Academy</title>
-
-  <style>
-    /* =========================================
-       SAURABH CHAVAN BADMINTON ACADEMY
-       Mint / White Neumorphic UI
-       ========================================= */
-
-    :root {
-      --bg: #e9eee9;
-      --surface: #f5f8f4;
-      --white: #ffffff;
-      --mint: #9be8ce;
-      --mint-strong: #59cba6;
-      --mint-dark: #267b62;
-      --ink: #26352f;
-      --muted: #77847d;
-      --border: #d9e2da;
-      --danger: #e99494;
-      --warning: #f3d98c;
-
-      --shadow-out:
-        8px 8px 18px #cbd3cb,
-        -8px -8px 18px #ffffff;
-
-      --shadow-small:
-        4px 4px 9px #cbd3cb,
-        -4px -4px 9px #ffffff;
-
-      --shadow-in:
-        inset 4px 4px 9px #cbd3cb,
-        inset -4px -4px 9px #ffffff;
-
-      --radius: 24px;
-      --radius-small: 15px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 95px;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    body, button, input, select, textarea {
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input, select, textarea {
-      font-size: 16px;
-    }
-
-    button, a, input, select, textarea {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      color: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 36px));
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: 78px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 38px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--mint-dark);
-    }
-
-    .eyebrow::before,
-    .eyebrow::after {
-      content: "";
-      width: 20px;
-      height: 2px;
-      border-radius: 2px;
-      background: var(--mint-strong);
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.15;
-      letter-spacing: -.045em;
-    }
-
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      margin: 20px 0;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      margin: 12px 0;
-    }
-
-    h3 {
-      font-size: 20px;
-    }
-
-    .section-heading p,
-    .muted {
-      color: var(--muted);
-    }
-
-    .section-heading p {
-      max-width: 580px;
-      margin: 12px auto 0;
-    }
-
-    .mint-text {
-      color: var(--mint-dark);
-    }
-
-    /* Neumorphic surfaces */
-
-    .neu {
-      background: var(--bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-out);
-    }
-
-    .neu-inset {
-      background: var(--bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-in);
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid rgba(255,255,255,.75);
-      border-radius: var(--radius);
-      padding: 25px;
-      box-shadow: var(--shadow-small);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-out);
-    }
-
-    /* Buttons */
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 13px 20px;
-      border: 1px solid rgba(255,255,255,.8);
-      border-radius: 999px;
-      background: var(--mint);
-      color: #183d30;
-      font-weight: 800;
-      font-size: 14px;
-      box-shadow:
-        5px 5px 11px #cbd3cb,
-        -5px -5px 11px #ffffff;
-      cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      background: #a9f0d8;
-      box-shadow:
-        3px 3px 7px #cbd3cb,
-        -3px -3px 7px #ffffff,
-        0 0 12px #9be8ce80;
-    }
-
-    .btn:active {
-      transform: translateY(1px);
-      box-shadow: var(--shadow-in);
-    }
-
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--ink);
-    }
-
-    .btn-dark {
-      background: #263b31;
-      color: white;
-      border-color: #263b31;
-      box-shadow: 5px 5px 11px #cbd3cb, -5px -5px 11px #ffffff;
-    }
-
-    .btn-dark:hover {
-      background: #355646;
-      color: white;
-    }
-
-    .btn-whatsapp {
-      background: #a4e9bd;
-      color: #174b30;
-    }
-
-    .btn-wide {
-      width: 100%;
-    }
-
-    /* Header */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(233, 238, 233, .91);
-      border-bottom: 1px solid rgba(255,255,255,.7);
-      backdrop-filter: blur(16px);
-    }
-
-    .nav {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-icon {
-      flex: 0 0 46px;
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: var(--mint);
-      box-shadow: var(--shadow-small);
-      font-size: 24px;
-    }
-
-    .brand-name {
-      font-size: 15px;
-      line-height: 1.2;
-      font-weight: 900;
-      letter-spacing: -.035em;
-    }
-
-    .brand-subtitle {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .09em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .nav-links a {
-      font-size: 12px;
-      font-weight: 800;
-      color: #526158;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--mint-dark);
-    }
-
-    .nav-cta {
-      min-height: 42px;
-      padding: 10px 16px;
-      white-space: nowrap;
-    }
-
-    .menu-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: 0;
-      border-radius: 14px;
-      background: var(--bg);
-      box-shadow: var(--shadow-small);
-      font-size: 23px;
-      cursor: pointer;
-    }
-
-    /* Hero */
-
-    .hero {
-      padding: 55px 0 68px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 48px;
-    }
-
-    .hero-copy {
-      padding: 10px 0;
-    }
-
-    .hero-copy h1 span {
-      color: var(--mint-dark);
-    }
-
-    .hero-copy > p {
-      max-width: 520px;
-      font-size: 16px;
-      line-height: 1.9;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 27px;
-    }
-
-    .hero-trust {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 27px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .check-circle {
-      width: 31px;
-      height: 31px;
-      flex: 0 0 31px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--mint);
-      color: var(--mint-dark);
-      font-weight: 900;
-      box-shadow: var(--shadow-small);
-    }
-
-    .hero-visual {
-      position: relative;
-      padding: 14px;
-      border-radius: 32px;
-      box-shadow: var(--shadow-out);
-    }
-
-    .hero-photo {
-      position: relative;
-      overflow: hidden;
-      height: 455px;
-      border-radius: 23px;
-      background: #d8e6db;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-photo::after {
-      content: "";
-      position: absolute;
-      inset: 45% 0 0;
-      background: linear-gradient(transparent, rgba(15,40,28,.65));
-      pointer-events: none;
-    }
-
-    .photo-caption {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      right: 24px;
-      z-index: 1;
-      color: white;
-    }
-
-    .photo-caption strong {
-      display: block;
-      font-size: 20px;
-    }
-
-    .photo-caption span {
-      font-size: 12px;
-      opacity: .9;
-    }
-
-    .floating-note {
-      position: absolute;
-      right: -16px;
-      top: 35px;
-      max-width: 180px;
-      padding: 15px;
-      border-radius: 19px;
-      background: var(--surface);
-      box-shadow: var(--shadow-out);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .floating-note span {
-      display: block;
-      font-size: 23px;
-      margin-bottom: 4px;
-    }
-
-    .hero-badge {
-      position: absolute;
-      left: -15px;
-      bottom: 34px;
-      padding: 13px 17px;
-      border-radius: 16px;
-      background: var(--mint);
-      color: #244b3c;
-      box-shadow: var(--shadow-out);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    /* Quick highlights */
-
-    .quick-strip {
-      padding: 25px 0;
-    }
-
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 17px;
-    }
-
-    .quick-item {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      min-width: 0;
-      padding: 17px;
-      border-radius: 19px;
-      background: var(--bg);
-      box-shadow: var(--shadow-small);
-    }
-
-    .quick-icon {
-      width: 42px;
-      height: 42px;
-      flex: 0 0 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: var(--mint);
-      font-size: 20px;
-    }
-
-    .quick-item strong {
-      display: block;
-      font-size: 12px;
-    }
-
-    .quick-item small {
-      display: block;
-      margin-top: 3px;
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    /* About */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .about-photo-frame {
-      padding: 13px;
-      border-radius: 28px;
-      box-shadow: var(--shadow-out);
-    }
-
-    .about-photo {
-      height: 420px;
-      overflow: hidden;
-      border-radius: 20px;
-      background: #d7e5d9;
-    }
-
-    .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .about-copy > p {
-      color: var(--muted);
-      line-height: 1.9;
-    }
-
-    .about-points {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 25px;
-    }
-
-    .about-point {
-      padding: 16px;
-      border-radius: 18px;
-      background: var(--bg);
-      box-shadow: var(--shadow-small);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .about-point span {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    /* Training */
-
-    .training-section {
-      background: rgba(255,255,255,.2);
-      border-top: 1px solid rgba(255,255,255,.6);
-      border-bottom: 1px solid rgba(255,255,255,.6);
-    }
-
-    .training-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .training-card {
-      padding: 27px;
-      border-radius: 23px;
-      background: var(--bg);
-      box-shadow: var(--shadow-out);
-    }
-
-    .training-icon {
-      width: 57px;
-      height: 57px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      background: var(--mint);
-      box-shadow: var(--shadow-small);
-      font-size: 26px;
-    }
-
-    .training-card h3 {
-      margin: 21px 0 10px;
-    }
-
-    .training-card p {
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.85;
-    }
-
-    /* Gallery */
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      grid-auto-rows: 190px;
-      gap: 18px;
-    }
-
-    .gallery-item {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      padding: 8px;
-      border: 0;
-      border-radius: 22px;
-      background: var(--bg);
-      box-shadow: var(--shadow-small);
-      cursor: pointer;
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-out);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 15px;
-      transition: transform .4s;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.04);
-    }
-
-    .gallery-item.tall {
-      grid-row: span 2;
-    }
-
-    .gallery-item.wide {
-      grid-column: span 2;
-    }
-
-    .gallery-error {
-      display: none;
-      grid-column: 1 / -1;
-      padding: 25px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    /* Location */
-
-    .location-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      align-items: center;
-      gap: 35px;
-    }
-
-    .location-copy p {
-      color: var(--muted);
-      line-height: 1.9;
-    }
-
-    .location-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .map-card {
-      min-height: 310px;
-      padding: 20px;
-      border-radius: 26px;
-      box-shadow: var(--shadow-out);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .map-illustration {
-      width: 100px;
-      height: 100px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--mint);
-      box-shadow: var(--shadow-out);
-      font-size: 42px;
-      margin-bottom: 22px;
-    }
-
-    .map-card p {
-      max-width: 300px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* Enquiry */
-
-    .enquiry-section {
-      background: rgba(255,255,255,.2);
-      border-top: 1px solid rgba(255,255,255,.6);
-    }
-
-    .enquiry-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 35px;
-      align-items: start;
-    }
-
-    .enquiry-copy p {
-      color: var(--muted);
-      line-height: 1.9;
-    }
-
-    .contact-tip {
-      margin-top: 24px;
-      padding: 19px;
-      border-radius: 19px;
-      box-shadow: var(--shadow-in);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .contact-tip strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-
-    .form-card {
-      padding: 29px;
-      border-radius: 26px;
-      background: var(--bg);
-      box-shadow: var(--shadow-out);
-    }
-
-    .form-card h3 {
-      margin-bottom: 5px;
-    }
-
-    .form-intro {
-      margin-bottom: 22px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      min-width: 0;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      min-width: 0;
-      padding: 13px 14px;
-      border: 1px solid rgba(255,255,255,.9);
-      border-radius: 13px;
-      outline: none;
-      background: var(--bg);
-      color: var(--ink);
-      box-shadow: var(--shadow-in);
-      transition: box-shadow .2s, border-color .2s;
-    }
-
-    .field textarea {
-      min-height: 105px;
-      resize: vertical;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--mint-strong);
-      box-shadow:
-        inset 2px 2px 5px #cbd3cb,
-        inset -2px -2px 5px #ffffff,
-        0 0 0 3px #9be8ce80;
-    }
-
-    .form-card .btn {
-      margin-top: 21px;
-    }
-
-    .privacy-note {
-      margin: 13px 0 0;
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* Footer */
-
-    footer {
-      padding: 38px 0 24px;
-    }
-
-    .footer-panel {
-      padding: 30px;
-      border-radius: 25px;
-      box-shadow: var(--shadow-out);
-    }
-
-    .footer-main {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .footer-title {
-      font-weight: 900;
-      font-size: 16px;
-    }
-
-    .footer-subtitle {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .footer-links a:hover {
-      color: var(--mint-dark);
-    }
-
-    .copyright {
-      padding-top: 20px;
-      margin-top: 24px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 11px;
-      text-align: center;
-    }
-
-    /* WhatsApp floating button */
-
-    .whatsapp-float {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 90;
-      width: 60px;
-      height: 60px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #a4e9bd;
-      color: #164b30;
-      font-size: 27px;
-      box-shadow: var(--shadow-out);
-      border: 2px solid rgba(255,255,255,.85);
-      transition: transform .2s;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.07);
-    }
-
-    /* Lightbox */
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      padding: 24px;
-      background: rgba(30, 42, 35, .91);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: min(100%, 1050px);
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 15px;
-      box-shadow: 0 20px 70px #0005;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 18px;
-      right: 20px;
-      width: 46px;
-      height: 46px;
-      border: 0;
-      border-radius: 50%;
-      background: var(--surface);
-      box-shadow: var(--shadow-out);
-      font-size: 26px;
-      cursor: pointer;
-    }
-
-    /* Animation */
-
-    @media (prefers-reduced-motion: no-preference) {
-      .reveal {
-        animation: fade-up .7s both;
-      }
-
-      @keyframes fade-up {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .hero-visual {
-        animation: arrive .8s both;
-      }
-
-      @keyframes arrive {
-        from {
-          opacity: 0;
-          transform: translateX(15px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-    }
-
-    /* Responsive */
-
-    @media (max-width: 1000px) {
-      .nav-links {
-        gap: 13px;
-      }
-
-      .nav-links a {
-        font-size: 11px;
-      }
-
-      .nav-cta {
-        display: none;
-      }
-
-      .hero-grid {
-        gap: 30px;
-      }
-
-      .hero-photo {
-        height: 400px;
-      }
-
-      .quick-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 760px) {
-      .container {
-        width: min(100% - 28px, 600px);
-      }
-
-      .section {
-        padding: 57px 0;
-      }
-
-      .nav {
-        min-height: 70px;
-      }
-
-      .brand-icon {
-        width: 41px;
-        height: 41px;
-        flex-basis: 41px;
-      }
-
-      .brand-name {
-        font-size: 13px;
-      }
-
-      .brand-subtitle {
-        font-size: 8px;
-      }
-
-      .menu-toggle {
-        display: block;
-        flex: 0 0 44px;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        padding: 20px;
-        background: var(--bg);
-        box-shadow: 0 12px 18px #26352f12;
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 12px;
-        font-size: 14px;
-        border-radius: 12px;
-      }
-
-      .nav-links a:hover {
-        background: var(--surface);
-      }
-
-      .hero {
-        padding: 35px 0 45px;
-      }
-
-      .hero-grid,
-      .about-grid,
-      .location-grid,
-      .enquiry-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      h1 {
-        font-size: clamp(42px, 12vw, 62px);
-      }
-
-      .hero-copy > p {
-        font-size: 14px;
-      }
-
-      .hero-visual {
-        margin: 0 7px;
-      }
-
-      .hero-photo {
-        height: 350px;
-      }
-
-      .floating-note {
-        right: -10px;
-        top: 23px;
-      }
-
-      .hero-badge {
-        left: -10px;
-        bottom: 23px;
-      }
-
-      .quick-strip {
-        padding: 8px 0 30px;
-      }
-
-      .quick-grid {
-        gap: 12px;
-      }
-
-      .quick-item {
-        padding: 13px;
-      }
-
-      .quick-item strong {
-        font-size: 11px;
-      }
-
-      .quick-item small {
-        font-size: 9px;
-      }
-
-      .about-photo {
-        height: 340px;
-      }
-
-      .training-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-
-      .training-card {
-        padding: 23px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 145px;
-        gap: 12px;
-      }
-
-      .gallery-item.wide {
-        grid-column: span 1;
-      }
-
-      .gallery-item.tall {
-        grid-row: span 2;
-      }
-
-      .map-card {
-        min-height: 275px;
-      }
-
-      .form-card {
-        padding: 22px;
-      }
-
-      .footer-panel {
-        padding: 23px;
-      }
-
-      .footer-main {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .whatsapp-float {
-        width: 54px;
-        height: 54px;
-        right: 14px;
-        bottom: 14px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .brand-subtitle {
-        letter-spacing: .025em;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .quick-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .quick-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .about-points {
-        gap: 11px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .location-buttons {
-        flex-direction: column;
-      }
-
-      .location-buttons .btn {
-        width: 100%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saurabh Chavan Badminton Academy</title>
+<meta name="description" content="Join Saurabh Chavan Badminton Academy for badminton coaching, fitness, skills and district, state and national tournament preparation. Regular batch ₹1350 per month.">
+<meta name="theme-color" content="#09282d">
+<style>
+:root{--mint:#9cf5d8;--glass:rgba(255,255,255,.13);--line:rgba(255,255,255,.26);--text:#f5fffb;--muted:#d4e7df}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#071b20;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+.wrap{width:min(1100px,92%);margin:auto}
+.nav{position:sticky;top:0;z-index:10;background:rgba(4,25,29,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navin{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:800}.brand small{display:block;color:var(--muted);font-size:12px}
+.links{display:flex;gap:15px;align-items:center;flex-wrap:wrap;font-size:14px}
+.links a:hover{color:var(--mint)}
+.menu{display:none;background:var(--glass);color:white;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.btn{display:inline-block;padding:12px 18px;border-radius:13px;background:linear-gradient(135deg,#20bd99,#08735f);color:white;border:1px solid var(--line);font-weight:700;cursor:pointer}
+.btn.alt{background:var(--glass);backdrop-filter:blur(10px)}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(16px) saturate(135%);-webkit-backdrop-filter:blur(16px) saturate(135%);box-shadow:0 20px 55px #0004,inset 0 1px 0 #ffffff38}
+.hero{position:relative;isolation:isolate;min-height:650px;display:flex;align-items:center;padding:60px 0;background:linear-gradient(110deg,rgba(3,22,27,.8),rgba(3,33,42,.38),rgba(52,8,74,.35)),url('photo-03.jpg') center/cover no-repeat}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 15% 20%,#29e1be40,transparent 38%),radial-gradient(circle at 85% 75%,#994cff55,transparent 40%)}
+.hero-card{max-width:820px;padding:clamp(24px,5vw,52px);animation:enter .7s ease both}
+.pill{display:inline-block;border:1px solid var(--line);background:var(--glass);padding:7px 13px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1px;color:var(--mint)}
+.kicker{font-size:12px;letter-spacing:2px;color:var(--mint);font-weight:800;margin-top:22px}
+h1{font-size:clamp(40px,7vw,76px);line-height:1.03;margin:12px 0}
+h1 span{color:var(--mint)}
+p{color:var(--muted)}
+.hero p{max-width:650px;font-size:17px}
+.fee{display:inline-flex;flex-direction:column;margin-top:12px;padding:12px 16px;border-radius:14px;background:#0003;border:1px solid var(--line)}
+.fee strong{font-size:26px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.features{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.features span{padding:8px 11px;border-radius:10px;border:1px solid var(--line);background:#ffffff12;font-size:13px}
+.section{padding:68px 0}
+.heading{text-align:center;margin:0 auto 30px;max-width:720px}
+.eyebrow{color:var(--mint);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h2{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:8px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:24px;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-5px);border-color:#9cf5d899}
+.icon{font-size:30px}.card h3{margin:10px 0}
+.fee-card{max-width:650px;text-align:center;margin:auto;padding:32px}
+.bigfee{font-size:clamp(38px,7vw,60px);font-weight:900;color:var(--mint);margin:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.court-photo{width:100%;min-height:280px;object-fit:cover;border-radius:20px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery a{padding:6px;overflow:hidden}
+.gallery img{width:100%;height:180px;object-fit:cover;border-radius:14px;transition:transform .3s}
+.gallery a:hover img{transform:scale(1.04)}
+.form{max-width:760px;margin:auto;padding:26px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-weight:700;font-size:14px}
+input,select,textarea{width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:#ffffff12;color:white}
+input::placeholder,textarea::placeholder{color:#c7dcd4}
+select option{color:#15372d}
+textarea{min-height:90px}
+footer{padding:30px 0;background:#0004;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.wa{position:fixed;right:18px;bottom:18px;z-index:9;background:#16834a;color:white;width:55px;height:55px;display:grid;place-items:center;border-radius:50%;font-size:24px;border:1px solid var(--line);box-shadow:0 8px 24px #0005}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.reveal.show{opacity:1;transform:none}
+@keyframes enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr}}
+@media(max-width:620px){
+.menu{display:block}
+.links{display:none;position:absolute;top:68px;left:4%;right:4%;padding:18px;background:#041e20f7;border:1px solid var(--line);border-radius:16px;flex-direction:column;align-items:stretch}
+.links.open{display:flex}
+.hero{min-height:650px;background-position:center}
+.hero-card{padding:23px 18px}
+.grid{grid-template-columns:1fr}
+.gallery{grid-template-columns:repeat(2,1fr)}
+.gallery img{height:145px}
+.fields{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.section{padding:52px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container nav">
-
-      <a class="brand" href="#home" aria-label="Academy homepage">
-        <span class="brand-icon">🏸</span>
-        <span>
-          <span class="brand-name">Saurabh Chavan</span>
-          <span class="brand-subtitle">BADMINTON ACADEMY</span>
-        </span>
-      </a>
-
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#training">Training</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#location">Location</a>
-        <a href="#enquiry">Enquiry</a>
-      </nav>
-
-      <a class="btn nav-cta" href="#enquiry">Contact Coach ↗</a>
-
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-label="Open navigation"
-        aria-expanded="false"
-      >☰</button>
-
-    </div>
-  </header>
-
-  <main>
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-
-        <div class="hero-copy reveal">
-          <span class="eyebrow">Welcome to the academy</span>
-
-          <h1>
-            Train hard.<br>
-            Play smart.<br>
-            <span>Rise higher.</span>
-          </h1>
-
-          <p>
-            Discover badminton, develop your skills and become part
-            of the Saurabh Chavan Badminton Academy community.
-            Your next rally starts here.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#enquiry">
-              Enquire on WhatsApp <span>↗</span>
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              📍 Find Our Court
-            </a>
-          </div>
-
-          <div class="hero-trust">
-            <span class="check-circle">✓</span>
-            <span>Practice · Progress · Sportsmanship</span>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="hero-photo">
-            <img
-              src="photo-03.jpg"
-              alt="Badminton academy"
-              fetchpriority="high"
-            >
-
-            <div class="photo-caption">
-              <strong>Made for the game.</strong>
-              <span>Every practice is a chance to improve.</span>
-            </div>
-          </div>
-
-          <div class="floating-note">
-            <span>🏆</span>
-            Effort today.<br>Progress tomorrow.
-          </div>
-
-          <div class="hero-badge">🏸 Your badminton journey</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- QUICK HIGHLIGHTS -->
-    <section class="quick-strip" aria-label="Academy highlights">
-      <div class="container quick-grid">
-
-        <div class="quick-item">
-          <div class="quick-icon">🏸</div>
-          <div>
-            <strong>Badminton Training</strong>
-            <small>Learn and practise</small>
-          </div>
-        </div>
-
-        <div class="quick-item">
-          <div class="quick-icon">🎯</div>
-          <div>
-            <strong>Skill Development</strong>
-            <small>Improve your game</small>
-          </div>
-        </div>
-
-        <div class="quick-item">
-          <div class="quick-icon">🤝</div>
-          <div>
-            <strong>Team Spirit</strong>
-            <small>Grow together</small>
-          </div>
-        </div>
-
-        <div class="quick-item">
-          <div class="quick-icon">📍</div>
-          <div>
-            <strong>Find the Court</strong>
-            <small>Open Google Maps</small>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="container about-grid">
-
-        <div class="about-photo-frame">
-          <div class="about-photo">
-            <img
-              src="photo-12.jpg"
-              alt="Academy coaching and badminton practice"
-              loading="lazy"
-            >
-          </div>
-        </div>
-
-        <div class="reveal">
-          <span class="eyebrow">About us</span>
-          <h2>More than a game.<br><span class="mint-text">A way to grow.</span></h2>
-
-          <p>
-            Saurabh Chavan Badminton Academy is a place to explore
-            badminton, work on your technique and share your passion
-            for the sport.
-          </p>
-
-          <p>
-            Whether you're taking your first steps on court or
-            looking to sharpen your game, contact the coach to ask
-            about training options, available sessions and timings.
-          </p>
-
-          <div class="about-points">
-            <div class="about-point">
-              <span>🎯</span>
-              Focused practice
-            </div>
-            <div class="about-point">
-              <span>⚡</span>
-              Speed and agility
-            </div>
-            <div class="about-point">
-              <span>💚</span>
-              Confidence and discipline
-            </div>
-            <div class="about-point">
-              <span>🏆</span>
-              Celebrate progress
-            </div>
-          </div>
-
-          <div style="margin-top:25px">
-            <a class="btn" href="#enquiry">Ask About Training ↗</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TRAINING -->
-    <section class="section training-section" id="training">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="eyebrow">Training and development</span>
-          <h2>Build your <span class="mint-text">next level.</span></h2>
-          <p>
-            Explore different areas of badminton development.
-            Ask the coach which sessions best match your goals.
-          </p>
-        </div>
-
-        <div class="training-grid">
-
-          <article class="training-card">
-            <div class="training-icon">🏸</div>
-            <h3>Learn the Basics</h3>
-            <p>
-              Get familiar with grips, racket control, footwork,
-              serving and the fundamentals of the game.
-            </p>
-          </article>
-
-          <article class="training-card">
-            <div class="training-icon">⚡</div>
-            <h3>Improve Your Skills</h3>
-            <p>
-              Work on movement, consistency, shot selection,
-              coordination and focused practice.
-            </p>
-          </article>
-
-          <article class="training-card">
-            <div class="training-icon">🏆</div>
-            <h3>Competitive Practice</h3>
-            <p>
-              Develop match awareness, rally strategy and confidence
-              through structured practice and match experience.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="section" id="gallery">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="eyebrow">Academy moments</span>
-          <h2>Life on the <span class="mint-text">court.</span></h2>
-          <p>
-            Browse academy photos, practice moments and special
-            memories. Tap a photo to view it in full size.
-          </p>
-        </div>
-
-        <div class="gallery-grid" id="galleryGrid"></div>
-
-        <p class="muted" id="galleryMessage"
-           style="text-align:center;font-size:13px;margin-top:20px">
-          Loading academy photos…
-        </p>
-
-      </div>
-    </section>
-
-    <!-- LOCATION -->
-    <section class="section" id="location">
-      <div class="container location-grid">
-
-        <div class="location-copy">
-          <span class="eyebrow">Visit the academy</span>
-          <h2>Meet us <span class="mint-text">on court.</span></h2>
-
-          <p>
-            Need directions to Saurabh Chavan Badminton Academy?
-            Use the Google Maps link below to open the shared court
-            location on your device.
-          </p>
-
-          <p>
-            Check the location and contact the coach if you need
-            confirmation of training times or availability.
-          </p>
-
-          <div class="location-buttons">
-            <a
-              class="btn"
-              href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              📍 Open Google Maps ↗
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="#enquiry"
-            >
-              Ask the Coach
-            </a>
-          </div>
-        </div>
-
-        <div class="map-card">
-          <div class="map-illustration">📍</div>
-          <h3>Find Our Court</h3>
-          <p>
-            Open your supplied Google Maps location for directions
-            and available map details.
-          </p>
-          <a
-            class="btn btn-wide"
-            href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Navigate with Google Maps ↗
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- WHATSAPP ENQUIRY -->
-    <section class="section enquiry-section" id="enquiry">
-      <div class="container enquiry-grid">
-
-        <div class="enquiry-copy">
-          <span class="eyebrow">Get in touch</span>
-          <h2>Let's get you <span class="mint-text">playing.</span></h2>
-
-          <p>
-            Interested in badminton training? Fill in the enquiry
-            form and tap the WhatsApp button. Your details will be
-            placed into a message for the coach.
-          </p>
-
-          <a
-            class="btn btn-whatsapp"
-            href="https://wa.me/917709912868"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>✆</span> Chat with the Coach ↗
-          </a>
-
-          <div class="contact-tip">
-            <strong>💬 Direct WhatsApp enquiry</strong>
-            Your message opens in WhatsApp so you can review it
-            and choose whether to send it.
-          </div>
-
-          <div class="contact-tip">
-            <strong>📍 Need directions?</strong>
-            <a
-              href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac"
-              target="_blank"
-              rel="noopener noreferrer"
-              style="color:var(--mint-dark);font-weight:800"
-            >Open the court location in Google Maps ↗</a>
-          </div>
-        </div>
-
-        <form class="form-card" id="enquiryForm">
-          <h3>Student enquiry</h3>
-          <p class="form-intro">
-            Enter your details to prepare a WhatsApp message.
-          </p>
-
-          <div class="form-grid">
-
-            <div class="field">
-              <label for="studentName">Student name *</label>
-              <input
-                id="studentName"
-                name="studentName"
-                type="text"
-                placeholder="Your name"
-                autocomplete="name"
-                required
-              >
-            </div>
-
-            <div class="field">
-              <label for="studentAge">Age</label>
-              <input
-                id="studentAge"
-                name="studentAge"
-                type="number"
-                min="3"
-                max="99"
-                placeholder="Your age"
-              >
-            </div>
-
-            <div class="field">
-              <label for="contactNumber">Your contact number</label>
-              <input
-                id="contactNumber"
-                name="contactNumber"
-                type="tel"
-                placeholder="Mobile number"
-                autocomplete="tel"
-              >
-            </div>
-
-            <div class="field">
-              <label for="trainingLevel">Training interest</label>
-              <select id="trainingLevel" name="trainingLevel">
-                <option value="Beginner">Beginner</option>
-                <option value="Skill improvement">Skill improvement</option>
-                <option value="Competitive training">Competitive training</option>
-                <option value="Need advice">Need advice choosing</option>
-              </select>
-            </div>
-
-            <div class="field full">
-              <label for="preferredTime">Preferred training time</label>
-              <select id="preferredTime" name="preferredTime">
-                <option value="Flexible">Flexible</option>
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
-              </select>
-            </div>
-
-            <div class="field full">
-              <label for="extraMessage">Message (optional)</label>
-              <textarea
-                id="extraMessage"
-                name="extraMessage"
-                placeholder="Write any questions for the coach..."
-              ></textarea>
-            </div>
-
-          </div>
-
-          <button class="btn btn-whatsapp btn-wide" type="submit">
-            Send Enquiry on WhatsApp ↗
-          </button>
-
-          <p class="privacy-note">
-            Your form is not stored on this website. Tapping the
-            button opens WhatsApp with a prepared message. Review
-            it and tap Send in WhatsApp to contact the coach.
-          </p>
-        </form>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-panel">
-
-        <div class="footer-main">
-          <div>
-            <div class="footer-title">🏸 Saurabh Chavan Badminton Academy</div>
-            <div class="footer-subtitle">
-              Learn the game. Build confidence. Keep improving.
-            </div>
-          </div>
-
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#location">Location</a>
-            <a href="#enquiry">Contact</a>
-          </div>
-        </div>
-
-        <div class="copyright">
-          © <span id="currentYear"></span>
-          Saurabh Chavan Badminton Academy.
-          Built with care for badminton.
-        </div>
-
-      </div>
-    </div>
-  </footer>
-
-  <!-- FLOATING WHATSAPP LINK -->
-  <a
-    class="whatsapp-float"
-    href="https://wa.me/917709912868"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Contact the coach on WhatsApp"
-    title="Chat with the coach"
-  >✆</a>
-
-  <!-- PHOTO LIGHTBOX -->
-  <div
-    class="lightbox"
-    id="lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Expanded academy photo"
-  >
-    <button
-      class="lightbox-close"
-      id="lightboxClose"
-      type="button"
-      aria-label="Close image"
-    >×</button>
-    <img id="lightboxImage" src="" alt="Academy photo enlarged">
-  </div>
-
-  <script>
-    /* =========================================
-       CONFIGURATION
-       Update the links here if they ever change.
-       ========================================= */
-
-    const ACADEMY_CONFIG = {
-      mapsUrl:
-        "https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac",
-
-      // International format, digits only, no + sign.
-      whatsappNumber: "917709912868"
-    };
-
-    /* Gallery files.
-       This list skips photo-10.jpg and photo-13.jpg.
-       Add them here if you upload those files later. */
-
-    const galleryPhotos = [
-      { number: 1, label: "Academy photo 1" },
-      { number: 2, label: "Academy photo 2" },
-      { number: 3, label: "Academy photo 3" },
-      { number: 4, label: "Academy photo 4" },
-      { number: 5, label: "Academy photo 5" },
-      { number: 6, label: "Academy photo 6" },
-      { number: 7, label: "Academy photo 7" },
-      { number: 8, label: "Academy photo 8" },
-      { number: 9, label: "Academy photo 9" },
-      { number: 11, label: "Academy photo 11" },
-      { number: 12, label: "Academy photo 12" },
-      { number: 14, label: "Academy photo 14" },
-      { number: 15, label: "Academy photo 15" },
-      { number: 16, label: "Academy photo 16" },
-      { number: 17, label: "Academy photo 17" },
-      { number: 18, label: "Academy photo 18" },
-      { number: 19, label: "Academy photo 19" },
-      { number: 20, label: "Academy photo 20" },
-      { number: 21, label: "Academy photo 21" }
-    ];
-
-    /* Build the gallery */
-
-    const galleryGrid = document.getElementById("galleryGrid");
-    const galleryMessage = document.getElementById("galleryMessage");
-
-    let visiblePhotoCount = 0;
-
-    galleryPhotos.forEach((photo, index) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "gallery-item";
-
-      // Create an uneven editorial layout.
-      if (index === 0 || index === 5 || index === 10) {
-        button.classList.add("tall");
-      }
-
-      if (index === 2 || index === 8) {
-        button.classList.add("wide");
-      }
-
-      button.setAttribute("aria-label", "View " + photo.label);
-
-      const img = document.createElement("img");
-      const filename =
-        "photo-" + String(photo.number).padStart(2, "0") + ".jpg";
-
-      img.src = filename;
-      img.alt = photo.label;
-      img.loading = "lazy";
-
-      img.addEventListener("load", () => {
-        visiblePhotoCount++;
-        galleryMessage.textContent =
-          visiblePhotoCount + " academy photos available.";
-      });
-
-      img.addEventListener("error", () => {
-        button.remove();
-
-        if (galleryGrid.children.length === 0) {
-          galleryMessage.textContent =
-            "Photos could not be loaded. Check that your photo files are in the same folder as index.html.";
-        }
-      });
-
-      button.appendChild(img);
-
-      button.addEventListener("click", () => {
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImage = document.getElementById("lightboxImage");
-
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt;
-        lightbox.classList.add("open");
-
-        document.body.style.overflow = "hidden";
-        document.getElementById("lightboxClose").focus();
-      });
-
-      galleryGrid.appendChild(button);
-    });
-
-    /* Mobile menu */
-
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
-      );
-      menuToggle.textContent = isOpen ? "×" : "☰";
-    });
-
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation");
-        menuToggle.textContent = "☰";
-      });
-    });
-
-    /* Close the gallery lightbox */
-
-    function closeLightbox() {
-      document.getElementById("lightbox").classList.remove("open");
-      document.body.style.overflow = "";
-    }
-
-    document.getElementById("lightboxClose").addEventListener(
-      "click",
-      closeLightbox
-    );
-
-    document.getElementById("lightbox").addEventListener("click", event => {
-      if (event.target.id === "lightbox") {
-        closeLightbox();
-      }
-    });
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-    });
-
-    /* Current year */
-
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-
-    /* =========================================
-       WHATSAPP ENQUIRY FORM
-
-       Opens WhatsApp with the form details.
-       The visitor must still tap Send.
-       ========================================= */
-
-    document.getElementById("enquiryForm").addEventListener(
-      "submit",
-      function(event) {
-        event.preventDefault();
-
-        const name =
-          document.getElementById("studentName").value.trim();
-
-        const age =
-          document.getElementById("studentAge").value.trim();
-
-        const contact =
-          document.getElementById("contactNumber").value.trim();
-
-        const level =
-          document.getElementById("trainingLevel").value;
-
-        const time =
-          document.getElementById("preferredTime").value;
-
-        const extra =
-          document.getElementById("extraMessage").value.trim();
-
-        if (!name) {
-          document.getElementById("studentName").focus();
-          return;
-        }
-
-        const message = [
-          "Hello Coach! 👋",
-          "",
-          "I would like to enquire about Saurabh Chavan Badminton Academy.",
-          "",
-          "Student name: " + name,
-          "Age: " + (age || "Not provided"),
-          "Contact number: " + (contact || "Not provided"),
-          "Training interest: " + level,
-          "Preferred time: " + time,
-          "Additional message: " + (extra || "None"),
-          "",
-          "Please share the available training timings and fees.",
-          "",
-          "Thank you!"
-        ].join("\n");
-
-        const whatsappUrl =
-          "https://wa.me/" +
-          ACADEMY_CONFIG.whatsappNumber +
-          "?text=" +
-          encodeURIComponent(message);
-
-        const newWindow = window.open(
-          whatsappUrl,
-          "_blank",
-          "noopener,noreferrer"
-        );
-
-        // Fallback if the browser blocks the new window.
-        if (!newWindow) {
-          window.location.href = whatsappUrl;
-        }
-      }
-    );
-
-    /* Optional reveal animation for browsers with IntersectionObserver */
-
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("reveal");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
-
-      document.querySelectorAll(
-        ".card, .training-card, .quick-item, .about-point, .map-card"
-      ).forEach(element => {
-        observer.observe(element);
-      });
-    }
-  </script>
-
+<header class="nav">
+<div class="wrap navin">
+<a class="brand" href="#home">🏸 Saurabh Chavan<small>Badminton Academy</small></a>
+<button class="menu" id="menu" aria-expanded="false">☰ Menu</button>
+<nav class="links" id="links">
+<a href="#about">About</a><a href="#training">Training</a><a href="#fees">Fees</a><a href="#coach">Coach</a><a href="#gallery">Gallery</a><a href="#location">Location & Reviews</a><a class="btn" href="#admissions">Admissions</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="wrap">
+<div class="glass hero-card">
+<span class="pill">🏸 TRAIN • IMPROVE • COMPETE</span>
+<div class="kicker">SAURABH CHAVAN BADMINTON ACADEMY</div>
+<h1>Your Game.<br><span>Your Next Level.</span></h1>
+<p>Develop your badminton skills with Coach Saurabh Chavan. Train for better technique, fitness, match confidence and district, state and national tournament goals.</p>
+<div class="fee"><span>REGULAR BATCH</span><strong>₹1,350 <small>/ month</small></strong></div>
+<div class="actions">
+<a class="btn" href="#admissions">Join the Academy ↗</a>
+<a class="btn alt" href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac" target="_blank" rel="noopener">Find Our Court</a>
+</div>
+<div class="features"><span>🎯 Skill Training</span><span>⚡ Fitness & Footwork</span><span>🏆 Tournament Goals</span></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="wrap two">
+<div class="reveal"><span class="eyebrow">About the academy</span><h2>Build skills with the right training</h2>
+<p>Saurabh Chavan Badminton Academy helps players work on badminton skills, fitness, confidence and a positive sporting attitude.</p>
+<p>Whether you are a beginner or have competitive goals, regular practice can help you improve technique, movement and consistency.</p>
+<a class="btn" href="#admissions">Enquire Now</a></div>
+<img class="court-photo reveal" src="photo-12.jpg" alt="Badminton academy photo" onerror="this.onerror=null;this.src='photo-03.jpg'">
+</div>
+</section>
+
+<section class="section" id="training">
+<div class="wrap">
+<div class="heading"><span class="eyebrow">Training programmes</span><h2>Train for your next level</h2><p>Build a foundation, improve your game and work towards your badminton goals.</p></div>
+<div class="grid">
+<article class="glass card reveal"><div class="icon">🎯</div><h3>Basic Skills</h3><p>Practise grip, serves, clears, drops, net play and racket control.</p></article>
+<article class="glass card reveal"><div class="icon">⚡</div><h3>Footwork & Fitness</h3><p>Work on agility, balance, court coverage and recovery.</p></article>
+<article class="glass card reveal"><div class="icon">🏸</div><h3>Match Practice</h3><p>Develop rally consistency, shot selection and game awareness.</p></article>
+<article class="glass card reveal"><div class="icon">🥇</div><h3>District Preparation</h3><p>Work towards district competitions with focused practice and match preparation.</p></article>
+<article class="glass card reveal"><div class="icon">🏆</div><h3>State Preparation</h3><p>Build consistency and competitive skills while preparing for state-level opportunities.</p></article>
+<article class="glass card reveal"><div class="icon">🌟</div><h3>National Goals</h3><p>Work towards long-term development for national-level events.</p></article>
+</div>
+<p style="text-align:center;margin-top:18px">Participation and selection depend on player readiness, eligibility, performance and competition requirements.</p>
+</div>
+</section>
+
+<section class="section" id="fees">
+<div class="wrap">
+<div class="heading"><span class="eyebrow">Training fees</span><h2>Simple, clear pricing</h2><p>Ask the coach to confirm available batch timings.</p></div>
+<div class="glass fee-card reveal"><span class="eyebrow">Regular batch</span><div class="bigfee">₹1,350 <small>/ month</small></div>
+<p>Regular badminton training to build skills, improve technique and develop consistency.</p>
+<div class="actions" style="justify-content:center"><a class="btn" href="#admissions">Enquire About a Batch</a><a class="btn alt" href="https://wa.me/917709912868?text=Hello%20Coach%20Saurabh%2C%20I%20want%20to%20ask%20about%20the%20regular%20batch.">Ask on WhatsApp</a></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="coach">
+<div class="wrap two">
+<div class="glass card reveal" style="text-align:center"><div style="font-size:72px">🏸</div><h3>Meet Your Coach</h3><p>Badminton training and player development</p></div>
+<div class="reveal"><span class="eyebrow">Professional coaching</span><h2>Coach Saurabh Chavan</h2>
+<p>Enquire about learning badminton fundamentals, improving technique and preparing for competitive play.</p>
+<p>The academy supports players who aim for district, state and national-level tournaments through progressive practice and continued skill development.</p>
+<a class="btn" href="https://wa.me/917709912868?text=Hello%20Coach%20Saurabh%20Chavan%2C%20I%20want%20to%20know%20about%20coaching.">Contact Coach</a></div>
+</div>
+</section>
+
+<section class="section" id="gallery">
+<div class="wrap">
+<div class="heading"><span class="eyebrow">Academy moments</span><h2>Photo Gallery</h2><p>Keep these photo files in the same folder as index.html.</p></div>
+<div class="gallery">
+<a class="glass reveal" href="photo-01.jpg" target="_blank"><img loading="lazy" src="photo-01.jpg" alt="Academy photo 1"></a>
+<a class="glass reveal" href="photo-02.jpg" target="_blank"><img loading="lazy" src="photo-02.jpg" alt="Academy photo 2"></a>
+<a class="glass reveal" href="photo-03.jpg" target="_blank"><img loading="lazy" src="photo-03.jpg" alt="Academy photo 3"></a>
+<a class="glass reveal" href="photo-04.jpg" target="_blank"><img loading="lazy" src="photo-04.jpg" alt="Academy photo 4"></a>
+<a class="glass reveal" href="photo-05.jpg" target="_blank"><img loading="lazy" src="photo-05.jpg" alt="Academy photo 5"></a>
+<a class="glass reveal" href="photo-06.jpg" target="_blank"><img loading="lazy" src="photo-06.jpg" alt="Academy photo 6"></a>
+<a class="glass reveal" href="photo-07.jpg" target="_blank"><img loading="lazy" src="photo-07.jpg" alt="Academy photo 7"></a>
+<a class="glass reveal" href="photo-08.jpg" target="_blank"><img loading="lazy" src="photo-08.jpg" alt="Academy photo 8"></a>
+<a class="glass reveal" href="photo-09.jpg" target="_blank"><img loading="lazy" src="photo-09.jpg" alt="Academy photo 9"></a>
+<a class="glass reveal" href="photo-11.jpg" target="_blank"><img loading="lazy" src="photo-11.jpg" alt="Academy photo 10"></a>
+<a class="glass reveal" href="photo-12.jpg" target="_blank"><img loading="lazy" src="photo-12.jpg" alt="Academy photo 11"></a>
+<a class="glass reveal" href="photo-14.jpg" target="_blank"><img loading="lazy" src="photo-14.jpg" alt="Academy photo 12"></a>
+<a class="glass reveal" href="photo-15.jpg" target="_blank"><img loading="lazy" src="photo-15.jpg" alt="Academy photo 13"></a>
+<a class="glass reveal" href="photo-16.jpg" target="_blank"><img loading="lazy" src="photo-16.jpg" alt="Academy photo 14"></a>
+<a class="glass reveal" href="photo-17.jpg" target="_blank"><img loading="lazy" src="photo-17.jpg" alt="Academy photo 15"></a>
+<a class="glass reveal" href="photo-18.jpg" target="_blank"><img loading="lazy" src="photo-18.jpg" alt="Academy photo 16"></a>
+<a class="glass reveal" href="photo-19.jpg" target="_blank"><img loading="lazy" src="photo-19.jpg" alt="Academy photo 17"></a>
+<a class="glass reveal" href="photo-20.jpg" target="_blank"><img loading="lazy" src="photo-20.jpg" alt="Academy photo 18"></a>
+<a class="glass reveal" href="photo-21.jpg" target="_blank"><img loading="lazy" src="photo-21.jpg" alt="Academy photo 19"></a>
+</div>
+</div>
+</section>
+
+<section class="section" id="location">
+<div class="wrap">
+<div class="heading"><span class="eyebrow">Find us</span><h2>Location & Google Reviews</h2><p>Open the academy's Google Maps listing to view location, directions and available reviews.</p></div>
+<div class="grid">
+<article class="glass card reveal"><div class="icon">📍</div><h3>Academy Location</h3><p>Open Google Maps for location details and directions.</p><a class="btn" href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac" target="_blank" rel="noopener">Get Directions ↗</a></article>
+<article class="glass card reveal"><div class="icon">⭐</div><h3>Read Google Reviews</h3><p>See ratings and reviews available on the academy's Google listing.</p><a class="btn" href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac" target="_blank" rel="noopener">View Google Listing</a></article>
+<article class="glass card reveal"><div class="icon">✍️</div><h3>Leave a Review</h3><p>Share your honest experience using Google's review option, if available.</p><a class="btn" href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac" target="_blank" rel="noopener">Open Google Maps</a></article>
+</div>
+</div>
+</section>
+
+<section class="section" id="admissions">
+<div class="wrap">
+<div class="heading"><span class="eyebrow">Admissions</span><h2>Start Your Badminton Journey</h2><p>Fill in your details. WhatsApp opens with your enquiry ready to send.</p></div>
+<form class="glass form reveal" id="admissionForm">
+<div class="fields">
+<div class="field"><label for="student">Student name *</label><input id="student" required placeholder="Student name"></div>
+<div class="field"><label for="age">Student age *</label><input id="age" type="number" min="4" max="100" required placeholder="Age"></div>
+<div class="field"><label for="parent">Parent/guardian name</label><input id="parent" placeholder="If applicable"></div>
+<div class="field"><label for="phone">Contact number *</label><input id="phone" type="tel" required placeholder="Mobile number"></div>
+<div class="field"><label for="level">Playing level *</label><select id="level" required><option value="">Choose level</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Tournament player</option></select></div>
+<div class="field"><label for="goal">Training goal *</label><select id="goal" required><option value="">Choose goal</option><option>Learn badminton</option><option>Improve fitness and skills</option><option>District tournament</option><option>State tournament</option><option>National tournament</option></select></div>
+<div class="field full"><label for="message">Additional message</label><textarea id="message" placeholder="Preferred timing or questions"></textarea></div>
+</div>
+<p>Your details will be added to a WhatsApp message. Review it and press Send in WhatsApp.</p>
+<button class="btn" type="submit">Send Enquiry on WhatsApp ↗</button>
+</form>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap heading"><span class="eyebrow">Stay connected</span><h2>Share the Academy</h2><p>Share this website with friends and family.</p>
+<div class="actions" style="justify-content:center"><button class="btn" id="share">Share Website ↗</button><a class="btn alt" href="https://wa.me/?text=Check%20out%20Saurabh%20Chavan%20Badminton%20Academy" target="_blank" rel="noopener">Share on WhatsApp</a></div><p id="shareMsg" role="status"></p>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap foot"><div><strong>🏸 Saurabh Chavan Badminton Academy</strong><p>Coach: Saurabh Chavan · Regular batch ₹1,350/month</p></div><div><a href="https://wa.me/917709912868" target="_blank" rel="noopener">WhatsApp the Coach</a><br><a href="https://maps.app.goo.gl/fwCb8MmRJkormpSL7?g_st=ac" target="_blank" rel="noopener">Google Maps</a></div><div>© <span id="year"></span> Saurabh Chavan Badminton Academy</div></div></footer>
+<a class="wa" href="https://wa.me/917709912868?text=Hello%20Coach%20Saurabh%2C%20I%20want%20to%20ask%20about%20badminton%20coaching." aria-label="WhatsApp Coach" target="_blank" rel="noopener">✆</a>
+
+<script>
+const menu=document.getElementById('menu');
+const links=document.getElementById('links');
+menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'✕ Close':'☰ Menu'});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰ Menu'}));
+document.getElementById('year').textContent=new Date().getFullYear();
+const items=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const ob=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');ob.unobserve(e.target)}}),{threshold:.1});items.forEach(i=>ob.observe(i))}else items.forEach(i=>i.classList.add('show'));
+document.getElementById('admissionForm').addEventListener('submit',e=>{
+e.preventDefault();
+const val=id=>document.getElementById(id).value.trim();
+const msg=['Hello Coach Saurabh Chavan, I would like to enquire about admission.','Student: '+val('student'),'Age: '+val('age'),val('parent')?'Parent/guardian: '+val('parent'):'','Contact: '+val('phone'),'Level: '+val('level'),'Goal: '+val('goal'),val('message')?'Message: '+val('message'):'','Please share batch timings and admission details.'].filter(Boolean).join('\n');
+window.open('https://wa.me/917709912868?text='+encodeURIComponent(msg),'_blank');
+});
+document.getElementById('share').addEventListener('click',async()=>{
+const data={title:'Saurabh Chavan Badminton Academy',text:'Badminton coaching with Coach Saurabh Chavan',url:location.href};
+const out=document.getElementById('shareMsg');
+if(navigator.share){try{await navigator.share(data)}catch(e){}}
+else if(navigator.clipboard&&isSecureContext){try{await navigator.clipboard.writeText(location.href);out.textContent='Website link copied!'}catch(e){out.textContent='Copy the website address from your browser.'}}
+else out.textContent='Copy the website address from your browser.';
+});
+</script>
 </body>
 </html>
